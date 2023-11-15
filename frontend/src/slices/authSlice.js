@@ -4,6 +4,7 @@ const initialState = {
 	userInfo: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null,
 };
 
+// Authslice is for the localStorage management
 const authSlice = createSlice({
 	name: 'auth',
 	initialState,

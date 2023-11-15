@@ -5,7 +5,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
 import Loader from '../components/Loader';
-import { useLoginMutation, useRegisterMutation } from '../slices/usersApiSlice';
+import { useRegisterMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
 
@@ -15,7 +15,7 @@ const RegisterScreen = () => {
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch(); //
 	const navigate = useNavigate();
 
 	const [registerApiCall, { isLoading }] = useRegisterMutation();
@@ -41,7 +41,7 @@ const RegisterScreen = () => {
 		} else {
 			try {
 				const res = await registerApiCall({ name, email, password }).unwrap();
-				dispatch(setCredentials({ ...res }));
+				dispatch(setCredentials({ ...res })); // When after call the Api(Server) done,dispatch another action which to do
 				navigate(redirect);
 			} catch (err) {
 				toast.error(err?.data?.message || err.error);

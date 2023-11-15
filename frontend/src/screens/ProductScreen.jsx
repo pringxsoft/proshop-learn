@@ -27,8 +27,7 @@ const ProductScreen = () => {
 		<>
 			<Link
 				className='btn btn-light my-3'
-				to='/'
-			>
+				to='/'>
 				Go Back
 			</Link>
 			{isLoading ? (
@@ -88,13 +87,11 @@ const ProductScreen = () => {
 													<Form.Control
 														as='select'
 														value={qty}
-														onChange={e => setQty(Number(e.target.value))}
-													>
-														{[...Array(product.countInStock).keys()].map(x => (
+														onChange={(e) => setQty(Number(e.target.value))}>
+														{[...Array(product.countInStock).keys()].map((x) => (
 															<option
 																key={x + 1}
-																value={x + 1}
-															>
+																value={x + 1}>
 																{x + 1}
 															</option>
 														))}
@@ -109,8 +106,7 @@ const ProductScreen = () => {
 											className='btn-block'
 											type='button'
 											disabled={product.countInStock === 0}
-											onClick={addToCartHandler}
-										>
+											onClick={addToCartHandler}>
 											Add To Cart
 										</Button>
 									</ListGroup.Item>
