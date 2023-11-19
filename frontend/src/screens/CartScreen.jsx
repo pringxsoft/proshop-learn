@@ -54,11 +54,13 @@ const CartScreen = () => {
 											value={item.qty}
 											onChange={(e) => {
 												addToCartHandler(item, Number(e.target.value));
-											}}>
+											}}
+										>
 											{[...Array(item.countInStock).keys()].map((x) => (
 												<option
 													key={x + 1}
-													value={x + 1}>
+													value={x + 1}
+												>
 													{x + 1}
 												</option>
 											))}
@@ -68,7 +70,8 @@ const CartScreen = () => {
 										<Button
 											type='button'
 											variant='light'
-											onClick={() => removeFormCartHandler(item._id)}>
+											onClick={() => removeFormCartHandler(item._id)}
+										>
 											<FaTrash />
 										</Button>
 									</Col>
@@ -89,7 +92,8 @@ const CartScreen = () => {
 								type='button'
 								className='btn-block'
 								disabled={cartItems.length === 0}
-								onClick={checkoutHandler}>
+								onClick={checkoutHandler}
+							>
 								Proceed To Checkout
 							</Button>
 						</ListGroup.Item>

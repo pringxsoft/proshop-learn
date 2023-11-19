@@ -90,7 +90,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 // @desc    Update user profile
 // @route   PUT /api/users/profile
 // @access  Private
-const udpateUserProfile = asyncHandler(async (req, res) => {
+const updateUserProfile = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.user._id);
 
 	if (user) {
@@ -143,4 +143,4 @@ const updateUser = asyncHandler(async (req, res) => {
 	res.send('update user');
 });
 
-export { authUser, registerUser, logoutUser, getUserProfile, udpateUserProfile, getUsers, deleteUser, getUserByID, updateUser };
+export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, getUsers, deleteUser, getUserByID, updateUser };

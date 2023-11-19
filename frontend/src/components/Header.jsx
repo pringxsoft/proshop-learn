@@ -9,8 +9,8 @@ import { useLogoutMutation } from '../slices/usersApiSlice'; // call logout api
 import { logout } from '../slices/authSlice'; // dispatch to logout action
 
 const Header = () => {
-	const { cartItems } = useSelector(state => state.cart);
-	const { userInfo } = useSelector(state => state.auth);
+	const { cartItems } = useSelector((state) => state.cart);
+	const { userInfo } = useSelector((state) => state.auth);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -77,6 +77,23 @@ const Header = () => {
 										{''} Sign In
 									</Nav.Link>
 								</LinkContainer>
+							)}
+
+							{userInfo && userInfo.isAdmin && (
+								<NavDropdown
+									title='Admin'
+									id='adminmenu'
+								>
+									<LinkContainer to='/admin/productlist'>
+										<NavDropdown.Item>Products</NavDropdown.Item>
+									</LinkContainer>
+									<LinkContainer to='/admin/userlist'>
+										<NavDropdown.Item>Users</NavDropdown.Item>
+									</LinkContainer>
+									<LinkContainer to='/admin/orderlist'>
+										<NavDropdown.Item>Orders</NavDropdown.Item>
+									</LinkContainer>
+								</NavDropdown>
 							)}
 						</Nav>
 					</Navbar.Collapse>
