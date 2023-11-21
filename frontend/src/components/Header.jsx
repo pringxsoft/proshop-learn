@@ -28,19 +28,10 @@ const Header = () => {
 	};
 	return (
 		<>
-			<Navbar
-				bg='dark'
-				variant='dark'
-				expand='md'
-				className='py-0'
-				collapseOnSelect
-			>
+			<Navbar bg='dark' variant='dark' expand='md' className='py-0' collapseOnSelect>
 				<Container>
 					<Navbar.Brand href='/'>
-						<img
-							src={logo}
-							alt='ProShop'
-						/>
+						<img src={logo} alt='ProShop' />
 						ProShop
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -50,21 +41,14 @@ const Header = () => {
 								<Nav.Link href='/cart'>
 									<FaShoppingCart /> {''} Cart
 									{cartItems.length > 0 && (
-										<Badge
-											pill
-											bg='success'
-											style={{ marginLeft: '5px' }}
-										>
+										<Badge pill bg='success' style={{ marginLeft: '5px' }}>
 											{cartItems.reduce((a, c) => a + c.qty, 0)}
 										</Badge>
 									)}
 								</Nav.Link>
 							</LinkContainer>
 							{userInfo ? (
-								<NavDropdown
-									title={userInfo.name}
-									id='username'
-								>
+								<NavDropdown title={userInfo.name} id='username'>
 									<LinkContainer to='/profile'>
 										<NavDropdown.Item>Profile</NavDropdown.Item>
 									</LinkContainer>
@@ -80,10 +64,7 @@ const Header = () => {
 							)}
 
 							{userInfo && userInfo.isAdmin && (
-								<NavDropdown
-									title='Admin'
-									id='adminmenu'
-								>
+								<NavDropdown title='Admin' id='adminmenu'>
 									<LinkContainer to='/admin/productlist'>
 										<NavDropdown.Item>Products</NavDropdown.Item>
 									</LinkContainer>

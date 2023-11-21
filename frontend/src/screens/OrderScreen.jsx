@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Row, Col, ListGroup, Image, Button, Card, ListGroupItem } from 'react-bootstrap';
+import { Row, Col, ListGroup, Image, Button, Card } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import Message from '../components/Message';
@@ -10,7 +10,7 @@ import { useGetOrderDetailsQuery, usePayOrdersMutation, useGetPayPalClientIdQuer
 
 const OrderScreen = () => {
 	const { id: orderId } = useParams();
-	const { data: order, refetch, isLoading, error } = useGetOrderDetailsQuery(orderId); //不要以陈旧的数据告终使用refetch
+	const { data: order, refetch, isLoading, error } = useGetOrderDetailsQuery(orderId); //不要以陈旧的数据告终, 使用refetch
 
 	const [payOrder, { isLoading: loadingPay }] = usePayOrdersMutation();
 	const [deliverOrder, { isLoading: loadingDeliver }] = useDeliverOrderMutation();
