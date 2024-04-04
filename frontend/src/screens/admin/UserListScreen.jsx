@@ -9,7 +9,7 @@ import { useGetUsersQuery, useDeleteUserMutation } from '../../slices/usersApiSl
 const UserListScreen = () => {
 	const { data: users, isLoading, error, refetch } = useGetUsersQuery();
 
-	const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
+	const [deleteUser, { isLoading: loadingDelete, error: deleteError }] = useDeleteUserMutation();
 
 	const deleteHandler = async (id) => {
 		if (window.confirm('Are you sure?')) {
@@ -31,7 +31,12 @@ const UserListScreen = () => {
 			) : error ? (
 				<Message variant='danger'>{error}</Message>
 			) : (
-				<Table striped hover responsive className='table-sm'>
+				<Table
+					striped
+					hover
+					responsive
+					className='table-sm'
+				>
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -42,6 +47,7 @@ const UserListScreen = () => {
 						</tr>
 					</thead>
 					<tbody>
+						{deleteError && <Message variant='danger'>{deleteError.data.message}</Message>}
 						{users.map((user) => (
 							<tr key={user._id}>
 								<td>{user._id}</td>
@@ -52,11 +58,18 @@ const UserListScreen = () => {
 								<td>{user.isAdmin ? <FaCheck style={{ color: 'green' }} /> : <FaTimes style={{ color: 'red' }} />}</td>
 								<td>
 									<LinkContainer to={`/admin/user/${user._id}/edit`}>
-										<Button variant='light' className='btn-sm'>
+										<Button
+											variant='light'
+											className='btn-sm'
+										>
 											<FaEdit />
 										</Button>
 									</LinkContainer>
-									<Button variant='danger' className='btn-sm' onClick={() => deleteHandler(user._id)}>
+									<Button
+										variant='danger'
+										className='btn-sm'
+										onClick={() => deleteHandler(user._id)}
+									>
 										<FaTrash style={{ color: 'white' }} />
 									</Button>
 								</td>

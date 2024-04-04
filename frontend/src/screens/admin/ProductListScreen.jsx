@@ -47,7 +47,10 @@ const ProductListScreen = () => {
 					<h1>Products</h1>
 				</Col>
 				<Col className='text-end'>
-					<Button className='btn-sm m-3' onClick={() => createProductHandler()}>
+					<Button
+						className='btn-sm m-3'
+						onClick={() => createProductHandler()}
+					>
 						<FaEdit /> Create Product
 					</Button>
 				</Col>
@@ -81,11 +84,18 @@ const ProductListScreen = () => {
 									<td>{product.brand}</td>
 									<td>
 										<LinkContainer to={`/admin/product/${product._id}/edit`}>
-											<Button variant='light' className='btn-sm mx-2'>
+											<Button
+												variant='light'
+												className='btn-sm mx-2'
+											>
 												<FaEdit />
 											</Button>
 										</LinkContainer>
-										<Button variant='danger' className='btn-sm' onClick={() => deleteHandler(product._id)}>
+										<Button
+											variant='danger'
+											className='btn-sm'
+											onClick={() => deleteHandler(product._id)}
+										>
 											<FaTrash style={{ color: 'white' }} />
 										</Button>
 									</td>
@@ -93,7 +103,11 @@ const ProductListScreen = () => {
 							))}
 						</tbody>
 					</Table>
-					<Paginate pages={data.pages} page={data.page} isAdmin={true} />
+					<Paginate
+						pages={data.pages}
+						page={data.page}
+						isAdmin={true}
+					/>
 				</>
 			)}
 		</>
