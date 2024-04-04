@@ -47,6 +47,7 @@ const UserListScreen = () => {
 						</tr>
 					</thead>
 					<tbody>
+						{error && <Message variant='danger'>{error.data.message}</Message>}
 						{deleteError && <Message variant='danger'>{deleteError.data.message}</Message>}
 						{users.map((user) => (
 							<tr key={user._id}>
